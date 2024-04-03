@@ -2,8 +2,9 @@
 
 process sayHello {
   input: 
-    val param1
-    val param2
+    // Quitamos 'val' de la declaración de variables
+    param param1
+    param param2
     
   output:
     stdout
@@ -15,7 +16,8 @@ process sayHello {
 
 workflow {
   // Definir el canal de entrada con la tupla de valores param1 y param2
-  val inputChannel = Channel.of(tuple(params.param1, params.param2))
+  // Usamos 'input' en lugar de 'val' para definir las variables
+  inputChannel = Channel.of(tuple(params.param1, params.param2))
 
   // Ejecutar el proceso sayHello con los valores de param1 y param2 de manera paralela
   inputChannel.into { paramTuple ->
