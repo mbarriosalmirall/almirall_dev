@@ -1,7 +1,5 @@
 #!/usr/bin/env nextflow
 
-params.example_key = 'Hello'
-
 process sayHello {
     input: 
         val param1
