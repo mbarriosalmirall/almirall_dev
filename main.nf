@@ -1,17 +1,20 @@
 #!/usr/bin/env nextflow
- 
+
 process sayHello {
-  input: 
-    val x
-    val y
-  output:
-    stdout
-  script:
-    """
-    echo '$x $y world!'
-    """
+    input: 
+        val param1
+        val param2
+    
+    output:
+        stdout
+
+    script:
+        """
+        echo '${param1} ${param2} world!'
+        """
 }
- 
+
 workflow {
-  Channel.of(tuple('Bonjour', 'mon'), tuple('Ciao', 'mondo'), tuple('Hello', 'world'), tuple('Hola', 'mundo')) | sayHello | view
+  Channel.of(tuple(params.param1, params.param2)) | sayHello | view
+
 }
