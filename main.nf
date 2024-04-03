@@ -2,7 +2,8 @@
 
 process sayHello {
     input: 
-        val param1, val param2
+        val param1
+        val param2
     
     output:
         stdout
@@ -15,5 +16,6 @@ process sayHello {
 }
 
 workflow {
-    Channel.of(params.param1,params.param2) | sayHello | view
+    Channel.of(params.param1, params.param2) | sayHello | view
 }
+
