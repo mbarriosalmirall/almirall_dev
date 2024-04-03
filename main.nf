@@ -3,17 +3,19 @@
 process sayHello {
     input: 
         val param1
+        val param2
     
     output:
         stdout
 
     script:
         """
-        echo '${param1} world!'
+        echo '${param1} ${param2} world!'
         """
 }
 
 workflow {
-  Channel.of(params.param1) | sayHello | view
+  Channel.of(tuple(params.param1, params.param2)) | { param1, param2 -> sayHello(param1: param1, param2: param2) } | view
 }
+
 
