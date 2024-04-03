@@ -22,12 +22,10 @@ workflow {
   def param1_value = params.param1
   def param2_value = params.param2
   
-  // Crear un canal para cada parámetro
-  def param1_channel = Channel.of(param1_value)
-  def param2_channel = Channel.of(param2_value)
+  // Crear una tupla de parámetros
+  def params_tuple = tuple(param1_value, param2_value)
   
-  // Unir los canales de entrada y pasarlos al proceso
-  [param1_channel, param2_channel] | sayHello | view
+  // Crear un canal con la tupla de parámetros
+  Channel.of(params_tuple) | sayHello | view
 }
-
 
