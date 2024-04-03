@@ -14,6 +14,14 @@ process sayHello {
 }
 
 workflow {
-  // Desempaqueta la tupla de entrada en los parámetros param1 y param2
-  Channel.of(tuple(params.param1, params.param2)) | { param1, param2 -> sayHello(param1: param1, param2: param2) } | view
+  // Definir el canal de entrada con la tupla de valores param1 y param2
+  val inputChannel = Channel.of(tuple(params.param1, params.param2))
+
+  // Ejecutar el proceso sayHello con los valores de param1 y param2 de manera paralela
+  inputChannel.into { paramTuple ->
+    sayHello(param1: paramTuple[0], param2: paramTuple[1])
+  }
+
+  // Visualizar la salida del proceso
+  sayHello.out.view()
 }
