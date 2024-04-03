@@ -17,7 +17,7 @@ process sayHello {
 
 workflow {
 
-// Definir los valores de los parámetros
+    // Definir los valores de los parámetros
     def param1_value = params.param1
     def param2_value = params.param2
     
@@ -25,11 +25,10 @@ workflow {
     println "Param1: $param1_value"
     println "Param2: $param2_value"
 
-  // Crear canales de entrada para cada parámetro
-  def param1Channel = Channel.of(param1_value)
-  def param2Channel = Channel.of(param2_value)
+    // Crear canales de entrada para cada parámetro
+    def param1Channel = Channel.of(param1_value)
+    def param2Channel = Channel.of(param2_value)
   
-  // Unir los canales de entrada y enviarlos al proceso sayHello
-  (param1Channel, param2Channel).transpose() | sayHello | view
+    // Unir los canales de entrada y enviarlos al proceso sayHello
+    (param1Channel, param2Channel).transpose() | sayHello | view
 }
-
