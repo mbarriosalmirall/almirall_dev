@@ -19,10 +19,13 @@ workflow {
   def param1_value = params.param1
   def param2_value = params.param2
   
+  // Imprimir los valores de los parámetros para verificar
+  println "Param1: $param1_value"
+  println "Param2: $param2_value"
+  
   // Crear una tupla de parámetros
   def params_tuple = tuple(param1_value, param2_value)
   
   // Crear un canal con la tupla de parámetros
   Channel.of(params_tuple) | sayHello | view
 }
-
