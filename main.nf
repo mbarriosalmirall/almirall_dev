@@ -23,10 +23,11 @@ workflow {
   def param2_value = params.param2
   
   // Crear un canal para cada parámetro
-  val param1_channel = Channel.of(param1_value)
-  val param2_channel = Channel.of(param2_value)
+  def param1_channel = Channel.of(param1_value)
+  def param2_channel = Channel.of(param2_value)
   
   // Unir los canales de entrada y pasarlos al proceso
   [param1_channel, param2_channel] | sayHello | view
 }
+
 
