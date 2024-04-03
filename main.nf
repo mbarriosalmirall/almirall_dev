@@ -2,7 +2,7 @@
 
 process sayHello {
     input: 
-        val param1, param2
+        val param1, val param2
     
     output:
         stdout
