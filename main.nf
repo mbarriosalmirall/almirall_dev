@@ -16,6 +16,6 @@ process sayHello {
 }
 
 workflow {
-    Channel.of(params.param1, params.param2) | sayHello | view
+    Channel.of(params.param1, params.param2) | sayHello(param1, param2)  | view
 }
 
