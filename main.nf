@@ -15,7 +15,5 @@ process sayHello {
 }
 
 workflow {
-  Channel.of(tuple(params.param1, params.param2)) | sayHello(params.param1, params.param2) | view
-}
-
-
+  Channel.of(tuple('Maria', 'David')) | sayHello | view
+  }
