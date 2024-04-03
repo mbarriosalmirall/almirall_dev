@@ -24,16 +24,10 @@ workflow {
     println "Param1: $param1_value"
     println "Param2: $param2_value"
     
-    // Crear canales individuales para cada parámetro y pasarlos al proceso sayHello
-    input_param1 = Channel.of(param1_value)
-    input_param2 = Channel.of(param2_value)
+    // Crear un canal con la tupla de los valores de los parámetros
+    val param_channel = Channel.of(tuple(param1_value, param2_value))
     
-    // Usar los canales individuales como entradas al proceso sayHello
-    input_param1
-        .mix(input_param2)
-        .map { param1, param2 -> tuple(param1, param2) }
-        .set{ sayHello_ch }
-
-    sayHello_ch | sayHello | view
+    // Usar el canal como entrada para el proceso sayHello
+    param_channel | sayHello | view
 }
 
