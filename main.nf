@@ -1,8 +1,5 @@
 #!/usr/bin/env nextflow
 
-params.param1 = 'default_param1_value'
-params.param2 = 'default_param2_value'
-
 process sayHello {
     input: 
         val param1
