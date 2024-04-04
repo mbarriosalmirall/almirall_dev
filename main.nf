@@ -32,3 +32,4 @@ workflow {
     // Unir los canales de entrada y enviarlos al proceso sayHello
     (param1Channel, param2Channel).transpose() | sayHello | view
 }
+
