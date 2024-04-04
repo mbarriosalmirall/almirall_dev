@@ -19,5 +19,5 @@ workflow {
   param2 = Channel.of(params.param2)
   println param1
   println param2
-  sayHello(param1, param2)
+  sayHello(param1, param2) | view
 }
